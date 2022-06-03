@@ -23,13 +23,37 @@
     </header>
 
     <main class="container">
-        <div class="row">
-            
+        <div class="row" id="my-grid">
+            <div class="card" style="width: 18rem;">
+                <div id="card-img">
+                    <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/91xrEMcvmQL.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                        <h5 class="card-title">Pandemic (The Extinction Files, Book 1)</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item category">scifi</li>
+                        <li class="list-group-item price">7.81</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </main>
     
 </body>
 <script>
+    const cardImage = document.getElementById('card-img');
+
+    function getBookImages() {
+        fetch('https://striveschool-api.herokuapp.com/books')
+            .then(res => res.json())
+            .then(data => {
+                cardImage.innerHTML = `<img class="card-img-top" src="${data.img}" alt="Card image cap">`
+        })
+            .catch( e => alert(e))
+    }
+    console.log(getBookImages())
+     
     
 </script>
 <script src="https://kit.fontawesome.com/e065ff4ab3.js" crossorigin="anonymous"></script>
